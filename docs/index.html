@@ -24,33 +24,31 @@
     <h1>3x</h1>
     <picture>
       <source srcset="images/clinique-hp-photo-400@1x.jpg, images/clinique-hp-photo-400@1x.jpg 2x, images/clinique-hp-photo-400@1x.jpg 3x" />
-      <img src="404.jpg" />
+      <img src="404.jpg" id="img3" />
     </picture>
-    Your browser used: 
-    <script>
-      document.write(document.images[document.images.length - 1].currentSrc)
-    </script>
+    <p>Your browser used: <span id="img3src"></span></p>
 
     <h1>2x</h1>
     <picture>
       <source srcset="images/clinique-hp-photo-400@1x.jpg, images/clinique-hp-photo-400@1x.jpg 2x" />
-      <img src="404.jpg" />
+      <img src="404.jpg" id="img2" />
     </picture>
-    Your browser used: 
-    <script>
-      document.write(document.images[document.images.length - 1].currentSrc)
-    </script>
+    <p>Your browser used: <span id="img2src"></span></p>
 
     <h1>1x</h1>
     <picture>
       <source srcset="images/clinique-hp-photo-400@1x.jpg" />
-      <img src="404.jpg" />
+      <img src="404.jpg"  id="img1" />
     </picture>
-    Your browser used: 
+    <p>Your browser used: <span id="img1src"></span></p>
+
     <script>
-      document.write(document.images[document.images.length - 1].currentSrc)
+      window.addEventListener("load", () => {
+        let url = document.getElementById("img1").currentSrc;
+        document.getElementById("img1src").innerHTML = url;
+      })
+      
     </script>
-    
     
   </body>
 </html>
