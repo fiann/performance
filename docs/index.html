@@ -43,9 +43,12 @@
     <p>Your browser used: <span id="img1src"></span></p>
 
     <script>
+
       window.addEventListener("load", () => {
-        let url = document.getElementById("img1").currentSrc;
-        document.getElementById("img1src").innerHTML = url;
+        for (let i = 1; i <= 3; i++) {
+          let url = document.getElementById("img" + i).currentSrc;
+          document.getElementById("img" + i + "src").innerHTML = url;
+        }
       })
       
     </script>
