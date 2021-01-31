@@ -5,53 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Retina Images examples</title>
     <style>
-      img {
+      img.fixed-width {
         width: 400px;
         height: auto;
       }
+
+      img.full-width {
+        width: 100%;
+        height: auto;
+      }
+
+      .spec {
+        font-weight: bold;
+      }
     </style>
+    <link rel="stylesheet" href="./js/prism.css" />
+    <script src="./js/retina-images.js" defer></script>
+    <script src="./js/retina-images.js" defer></script>
+    <script src="./js/retina-images.js" defer></script>
   </head>
   <body>
     <h1>Retina image tests</h1>
     <p>
-      Your screen width is:
-      <strong>
-        @<script>document.write(window.devicePixelRatio);</script>
-      </strong>
-      resolution.
+      Your device pixel ratio is: <span class="info" id="spec-dpr"></span>. Viewport width is
+      <span class="info" id="spec-vw"></span>.
     </p>
 
-    <h1>3x</h1>
+    <h2>400px fixed width, @3x</h2>
+    <img
+      class="fixed-width"
+      id="fix-3-img"
+      width="400"
+      height="400"
+      sizes="400px, 800px, 1200px"
+      srcset="
+        ./images/clinique-hp-photo-400.jpg   400w,
+        ./images/clinique-hp-photo-800.jpg   800w,
+        ./images/clinique-hp-photo-1200.jpg 1200w
+      "
+      src="404.jpg"
+    />
+    <pre><code class="language-html">&lt;img class="fixed-width" id="fix-3-img"
+  width="400" height="400"
+  sizes="400px, 800px, 1200px"
+  srcset="
+    ./images/clinique-hp-photo-400.jpg   400w,
+    ./images/clinique-hp-photo-800.jpg   800w,
+    ./images/clinique-hp-photo-1200.jpg 1200w
+  "
+  src="404.jpg" /></code></pre>
+    <p>Your browser used: <span class="spec" id="fix-3-src"></span></p>
+
+    <h2>400px fixed width, @2x</h2>
+    <img
+      class="fixed-width"
+      id="fix-2-img"
+      width="400"
+      height="400"
+      sizes="400px, 800px"
+      srcset="./images/clinique-hp-photo-400.jpg 400w, ./images/clinique-hp-photo-800.jpg 800w"
+      src="404.jpg"
+    />
+    <pre><code class="language-html">&lt;img class="fixed-width" id="fix-2-img"
+  width="400" height="400"
+  sizes="400px, 800px"
+  srcset="
+    ./images/clinique-hp-photo-400.jpg   400w,
+    ./images/clinique-hp-photo-800.jpg   800w
+  "
+  src="404.jpg" /></code></pre>
+    <p>Your browser used: <span class="spec" id="fix-2-src"></span></p>
+
+    <h2>400px fixed width, @1x</h2>
+    <img
+      class="fixed-width"
+      id="fix-1-img"
+      width="400"
+      height="400"
+      sizes="400px"
+      srcset="./images/clinique-hp-photo-400.jpg 400w"
+      src="404.jpg"
+    />
+    <pre><code class="language-html">&lt;img class="fixed-width" id="fix-1-img"
+  width="400" height="400"
+  sizes="400px"
+  srcset="./images/clinique-hp-photo-400.jpg  400w"
+  src="404.jpg" /></code></pre>
+    <p>Your browser used: <span class="spec" id="fix-1-src"></span></p>
+
+    <h2>Full width, up to 2880px</h2>
     <picture>
-      <source srcset="images/clinique-hp-photo-400@1x.jpg, images/clinique-hp-photo-400@1x.jpg 2x, images/clinique-hp-photo-400@1x.jpg 3x" />
-      <img src="404.jpg" id="img3" />
+      <source
+        srcset="
+          ./images/clinique-banner-414.jpg   414w,
+          ./images/clinique-banner-828.jpg   828w,
+          ./images/clinique-banner-1440.jpg 1440w,
+          ./images/clinique-banner-1920.jpg 1920w,
+          ./images/clinique-banner-2880.jpg 2880w
+        "
+      />
+      <img class="full-width" src="404.jpg" id="fw-5-img" />
     </picture>
-    <p>Your browser used: <span id="img3src"></span></p>
+    <pre><code class="language-html">&lt;picture>
+  &lt;source
+    srcset="
+      ./images/clinique-banner-414.jpg   414w,
+      ./images/clinique-banner-828.jpg   828w,
+      ./images/clinique-banner-1440.jpg 1440w,
+      ./images/clinique-banner-1920.jpg 1920w,
+      ./images/clinique-banner-2880.jpg 2880w
+    "
+  />
+  &lt;img class="full-width" src="404.jpg" id="fw-5-img" />
+&lt;/picture></code></pre>
+    <p>Your browser used: <span class="spec" id="fw-5-src"></span></p>
 
-    <h1>2x</h1>
+    <h2>Full width, up to 1920px</h2>
     <picture>
-      <source srcset="images/clinique-hp-photo-400@1x.jpg, images/clinique-hp-photo-400@1x.jpg 2x" />
-      <img src="404.jpg" id="img2" />
+      <source
+        srcset="
+          ./images/clinique-banner-414.jpg   414w,
+          ./images/clinique-banner-828.jpg   828w,
+          ./images/clinique-banner-1440.jpg 1440w,
+          ./images/clinique-banner-1920.jpg 1920w
+        "
+      />
+      <img class="full-width" src="404.jpg" id="fw-4-img" />
     </picture>
-    <p>Your browser used: <span id="img2src"></span></p>
+    <pre><code class="language-html">&lt;picture>
+  &lt;source
+    srcset="
+      ./images/clinique-banner-414.jpg   414w,
+      ./images/clinique-banner-828.jpg   828w,
+      ./images/clinique-banner-1440.jpg 1440w,
+      ./images/clinique-banner-1920.jpg 1920w
+    "
+  />
+  &lt;img class="full-width" src="404.jpg" id="fw-4-img" />
+&lt;/picture></code></pre>
+    <p>Your browser used: <span class="spec" id="fw-4-src"></span></p>
 
-    <h1>1x</h1>
+    <h2>Full width, up to 1440px</h2>
     <picture>
-      <source srcset="images/clinique-hp-photo-400@1x.jpg" />
-      <img src="404.jpg"  id="img1" />
+      <source
+        srcset="
+          ./images/clinique-banner-414.jpg   414w,
+          ./images/clinique-banner-828.jpg   828w,
+          ./images/clinique-banner-1440.jpg 1440w
+        "
+      />
+      <img class="full-width" src="404.jpg" id="fw-3-img" />
     </picture>
-    <p>Your browser used: <span id="img1src"></span></p>
+    <pre><code class="language-html">&lt;picture>
+  &lt;source
+    srcset="
+      ./images/clinique-banner-414.jpg   414w,
+      ./images/clinique-banner-828.jpg   828w,
+      ./images/clinique-banner-1440.jpg 1440w
+    "
+  />
+  &lt;img class="full-width" src="404.jpg" id="fw-3-img" />
+&lt;/picture></code></pre>
+    <p>Your browser used: <span class="spec" id="fw-3-src"></span></p>
 
-    <script>
+    <h2>Full width, up to 828px</h2>
+    <picture>
+      <source
+        srcset="./images/clinique-banner-414.jpg 414w, ./images/clinique-banner-828.jpg 828w"
+      />
+      <img class="full-width" src="404.jpg" id="fw-2-img" />
+    </picture>
+    <pre><code class="language-html">&lt;picture>
+  &lt;source
+    srcset="
+      ./images/clinique-banner-414.jpg   414w,
+      ./images/clinique-banner-828.jpg   828w
+    "
+  />
+  &lt;img class="full-width" src="404.jpg" id="fw-2-img" />
+&lt;/picture></code></pre>
+    <p>Your browser used: <span class="spec" id="fw-2-src"></span></p>
 
-      window.addEventListener("load", () => {
-        for (let i = 1; i <= 3; i++) {
-          let url = document.getElementById("img" + i).currentSrc;
-          document.getElementById("img" + i + "src").innerHTML = url;
-        }
-      })
-      
-    </script>
-    
+    <h2>Full width, up to 414px</h2>
+    <picture>
+      <source srcset="./images/clinique-banner-414.jpg 414w" />
+      <img class="full-width" src="404.jpg" id="fw-1-img" />
+    </picture>
+    <pre><code class="language-html">&lt;picture>
+  &lt;source
+    srcset="./images/clinique-banner-414.jpg 414w"
+  />
+  &lt;img class="full-width" src="404.jpg" id="fw-1-img" />
+&lt;/picture></code></pre>
+    <p>Your browser used: <span class="spec" id="fw-1-src"></span></p>
+
+    <script src="js/prism.js"></script>
   </body>
 </html>
