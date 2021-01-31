@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Retina Images examples</title>
-</head>
-<body>
-  <h1>Retina image tests</h1>
-  <p>Your screen width is: <em>@<script>
-      document.write(window.devicePixelRatio)
-    </script></em> resolution.
-  </p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retina Images examples</title>
+    <style>
+      img {
+        width: 400px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Retina image tests</h1>
+    <p>
+      Your screen width is:
+      <strong>
+        @<script>document.write(window.devicePixelRatio);</script>
+      </strong>
+      resolution.
+    </p>
+
+    <h1>3x</h1>
+    <picture>
+      <source srcset="images/clinique-hp-photo-400@1x.jpg, images/clinique-hp-photo-400@1x.jpg 2x, images/clinique-hp-photo-400@1x.jpg 3x" />
+      <img src="404.jpg" />
+    </picture>
+    Your browser used: 
+    <script>
+      document.write(document.images[document.images.length - 1].currentSrc)
+    </script>
+
+    <h1>2x</h1>
+    <picture>
+      <source srcset="images/clinique-hp-photo-400@1x.jpg, images/clinique-hp-photo-400@1x.jpg 2x" />
+      <img src="404.jpg" />
+    </picture>
+    Your browser used: 
+    <script>
+      document.write(document.images[document.images.length - 1].currentSrc)
+    </script>
+
+    <h1>1x</h1>
+    <picture>
+      <source srcset="images/clinique-hp-photo-400@1x.jpg" />
+      <img src="404.jpg" />
+    </picture>
+    Your browser used: 
+    <script>
+      document.write(document.images[document.images.length - 1].currentSrc)
+    </script>
+    
+    
+  </body>
 </html>
