@@ -5,6 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Retina Images examples</title>
     <style>
+      body {
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      a {
+        color: dodgerblue;
+        text-decoration: none;
+      }
+
+      .toc {
+        padding: 1em 2em;
+        background-color: #f5f2f0;
+      }
+
+      @media screen and (min-width: 1024px) {
+        h1 {
+          font-size: 4em;
+        }
+        h2 {
+          padding-top: 1em;
+          font-size: 2.5em;
+        }
+        h3 {
+          font-size: 1.75em;
+        }
+      }
+
       img.fixed-width {
         width: 400px;
         height: auto;
@@ -17,35 +50,73 @@
 
       .spec {
         font-weight: bold;
+        color: darkred;
       }
     </style>
     <link rel="stylesheet" href="./js/prism.css" />
     <script src="./js/retina-images.js" defer></script>
-    <script src="./js/retina-images.js" defer></script>
-    <script src="./js/retina-images.js" defer></script>
   </head>
   <body>
-    <h1>Retina image tests</h1>
-    <p>
-      Your device pixel ratio is: <span class="info" id="spec-dpr"></span>. Viewport width is
-      <span class="info" id="spec-vw"></span>.
-    </p>
+    <h1>Retina images</h1>
 
-    <h2>400px fixed width, @3x</h2>
-    <img
-      class="fixed-width"
-      id="fix-3-img"
-      width="400"
-      height="400"
-      sizes="400px, 800px, 1200px"
-      srcset="
-        ./images/clinique-hp-photo-400.jpg   400w,
-        ./images/clinique-hp-photo-800.jpg   800w,
-        ./images/clinique-hp-photo-1200.jpg 1200w
-      "
-      src="404.jpg"
-    />
-    <pre><code class="language-html">&lt;img class="fixed-width" id="fix-3-img"
+    <p>HTML5 responsive image notes</p>
+    <div class="toc">
+      <p>Contents</p>
+      <ul>
+        <li><a href="#browser-spec">Current browser specification</a></li>
+        <li><a href="#fixed-img-format">Fixed size image format</a></li>
+        <li><a href="#fw-img-format">Full width banner image (no Art Direction)</a></li>
+        <li><a href="#fw-picture-format">Full width banner using Art Direction</a></li>
+      </ul>
+    </div>
+    <p>
+      Images that are adaptive (resize for different screens). Use the
+      <code class="language-html">&lt;img></code> tag:
+    </p>
+    <pre><code class="language-html">&lt;img 
+  width="" height=""
+  sizes=""
+  srcset=""
+  src="" /></code></pre>
+
+    <p>
+      For images that require <em>Art Direction</em>. Use the
+      <code class="language-html">&lt;picture></code> tag:
+    </p>
+    <pre><code class="language-html">&lt;picture>
+    &lt;source srcset="" />
+    &lt;img src="" />
+  &lt;/picture></code></pre>
+
+    <!-- Current browser spec -->
+    <div id="browser-spec">
+      <h2>Current browser spec</h2>
+      <p>
+        Your device pixel ratio is: <span class="spec" id="spec-dpr"></span>. Viewport width is
+        <span class="spec" id="spec-vw"></span> (CSS pixels) or <span class="spec" id="spec-phys"></span> (physical pixels).
+      </p>
+      <p>Resize your browser window to see which image variants are loaded. The browser will load a larger version of the image if you increase the size of the window. It will not load a smaller version of the image if you make the window smaller, it will simply scale down the existing image, unless you cross a Media Query breakpoint.</p>
+    </div>
+
+    <!-- Fixed size images -->
+    <div id="fixed-img-format">
+      <h2>Fixed size image format</h2>
+
+      <h3>400px fixed width, @3x</h3>
+      <img
+        class="fixed-width"
+        id="fix-3-img"
+        width="400"
+        height="400"
+        sizes="400px, 800px, 1200px"
+        srcset="
+          ./images/clinique-hp-photo-400.jpg   400w,
+          ./images/clinique-hp-photo-800.jpg   800w,
+          ./images/clinique-hp-photo-1200.jpg 1200w
+        "
+        src="404.jpg"
+      />
+      <pre><code class="language-html">&lt;img class="fixed-width" id="fix-3-img"
   width="400" height="400"
   sizes="400px, 800px, 1200px"
   srcset="
@@ -54,19 +125,19 @@
     ./images/clinique-hp-photo-1200.jpg 1200w
   "
   src="404.jpg" /></code></pre>
-    <p>Your browser used: <span class="spec" id="fix-3-src"></span></p>
+      <p>Your browser used: <span class="spec" id="fix-3-src"></span> (<span class="spec" id="fix-3-kb"></span>).</p>
 
-    <h2>400px fixed width, @2x</h2>
-    <img
-      class="fixed-width"
-      id="fix-2-img"
-      width="400"
-      height="400"
-      sizes="400px, 800px"
-      srcset="./images/clinique-hp-photo-400.jpg 400w, ./images/clinique-hp-photo-800.jpg 800w"
-      src="404.jpg"
-    />
-    <pre><code class="language-html">&lt;img class="fixed-width" id="fix-2-img"
+      <h3>400px fixed width, @2x</h3>
+      <img
+        class="fixed-width"
+        id="fix-2-img"
+        width="400"
+        height="400"
+        sizes="400px, 800px"
+        srcset="./images/clinique-hp-photo-400.jpg 400w, ./images/clinique-hp-photo-800.jpg 800w"
+        src="404.jpg"
+      />
+      <pre><code class="language-html">&lt;img class="fixed-width" id="fix-2-img"
   width="400" height="400"
   sizes="400px, 800px"
   srcset="
@@ -74,131 +145,233 @@
     ./images/clinique-hp-photo-800.jpg   800w
   "
   src="404.jpg" /></code></pre>
-    <p>Your browser used: <span class="spec" id="fix-2-src"></span></p>
+      <p>Your browser used: <span class="spec" id="fix-2-src"></span> (<span class="spec" id="fix-2-kb"></span>).</p>
 
-    <h2>400px fixed width, @1x</h2>
-    <img
-      class="fixed-width"
-      id="fix-1-img"
-      width="400"
-      height="400"
-      sizes="400px"
-      srcset="./images/clinique-hp-photo-400.jpg 400w"
-      src="404.jpg"
-    />
-    <pre><code class="language-html">&lt;img class="fixed-width" id="fix-1-img"
+      <h3>400px fixed width, @1x</h3>
+      <img
+        class="fixed-width"
+        id="fix-1-img"
+        width="400"
+        height="400"
+        sizes="400px"
+        srcset="./images/clinique-hp-photo-400.jpg 400w"
+        src="404.jpg"
+      />
+      <pre><code class="language-html">&lt;img class="fixed-width" id="fix-1-img"
   width="400" height="400"
   sizes="400px"
   srcset="./images/clinique-hp-photo-400.jpg  400w"
   src="404.jpg" /></code></pre>
-    <p>Your browser used: <span class="spec" id="fix-1-src"></span></p>
+      <p>Your browser used: <span class="spec" id="fix-1-src"></span> (<span class="spec" id="fix-1-kb"></span>).</p>
+    </div>
 
-    <h2>Full width, up to 2880px</h2>
-    <picture>
-      <source
+
+    <!-- Full width banner -->
+    <div id="fw-img-format">
+      <h2>Full width banner image</h2>
+      <p>For full width images, no Art Direction required.</p>
+
+      <h3>Full width, no art direction, up to 2880px</h3>
+      <img
+        class="full-width"
+        id="fw-5-img"
+        width="1920"
+        height="991"
+        sizes="100vw"
         srcset="
-          ./images/clinique-banner-414.jpg   414w,
-          ./images/clinique-banner-828.jpg   828w,
-          ./images/clinique-banner-1440.jpg 1440w,
-          ./images/clinique-banner-1920.jpg 1920w,
-          ./images/clinique-banner-2880.jpg 2880w
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
+        "
+        src="404.jpg"
+      />
+      <pre><code class="language-html">&lt;img
+class="full-width"
+id="fw-5-img"
+width="1920" height="991"
+sizes="100vw"
+srcset="
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
+  "
+src="404.jpg" /></code></pre>
+      <p>Your browser used: <span class="spec" id="fw-5-src"></span> (<span class="spec" id="fw-5-kb"></span>).</p>
+
+      <h3>Full width, no art direction, up to 1920px</h3>
+      <img
+        class="full-width"
+        id="fw-4-img"
+        width="1920"
+        height="991"
+        sizes="100vw"
+        srcset="
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w
         "
       />
-      <img class="full-width" src="404.jpg" id="fw-5-img" />
-    </picture>
-    <pre><code class="language-html">&lt;picture>
-  &lt;source
-    srcset="
-      ./images/clinique-banner-414.jpg   414w,
-      ./images/clinique-banner-828.jpg   828w,
-      ./images/clinique-banner-1440.jpg 1440w,
-      ./images/clinique-banner-1920.jpg 1920w,
-      ./images/clinique-banner-2880.jpg 2880w
-    "
-  />
-  &lt;img class="full-width" src="404.jpg" id="fw-5-img" />
-&lt;/picture></code></pre>
-    <p>Your browser used: <span class="spec" id="fw-5-src"></span></p>
+      <pre><code class="language-html">&lt;img
+class="full-width"
+id="fw-4-img"
+width="1920" height="991"
+sizes="100vw"
+srcset="
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w
+  "
+/></code></pre>
+      <p>Your browser used: <span class="spec" id="fw-4-src"></span> (<span class="spec" id="fw-4-kb"></span>).</p>
 
-    <h2>Full width, up to 1920px</h2>
-    <picture>
-      <source
+      <h3>Full width, no art direction, up to 1440px</h3>
+      <img
+        class="full-width"
+        id="fw-3-img"
+        width="1920"
+        height="991"
+        sizes="100vw"
         srcset="
-          ./images/clinique-banner-414.jpg   414w,
-          ./images/clinique-banner-828.jpg   828w,
-          ./images/clinique-banner-1440.jpg 1440w,
-          ./images/clinique-banner-1920.jpg 1920w
-        "
-      />
-      <img class="full-width" src="404.jpg" id="fw-4-img" />
-    </picture>
-    <pre><code class="language-html">&lt;picture>
-  &lt;source
-    srcset="
-      ./images/clinique-banner-414.jpg   414w,
-      ./images/clinique-banner-828.jpg   828w,
-      ./images/clinique-banner-1440.jpg 1440w,
-      ./images/clinique-banner-1920.jpg 1920w
-    "
-  />
-  &lt;img class="full-width" src="404.jpg" id="fw-4-img" />
-&lt;/picture></code></pre>
-    <p>Your browser used: <span class="spec" id="fw-4-src"></span></p>
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w
+        "/>
+      <pre><code class="language-html">&lt;img
+  class="full-width"
+  id="fw-3-img"
+  width="1920" height="991"
+  sizes="100vw"
+  srcset="
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w
+  "/></code></pre>
+      <p>Your browser used: <span class="spec" id="fw-3-src"></span> (<span class="spec" id="fw-3-kb"></span>).</p>
 
-    <h2>Full width, up to 1440px</h2>
-    <picture>
-      <source
+      <h3>Full width, no art direction, up to 828px</h3>
+      <img
+        class="full-width"
+        id="fw-2-img"
+        width="1920"
+        height="991"
+        sizes="100vw"
         srcset="
-          ./images/clinique-banner-414.jpg   414w,
-          ./images/clinique-banner-828.jpg   828w,
-          ./images/clinique-banner-1440.jpg 1440w
-        "
-      />
-      <img class="full-width" src="404.jpg" id="fw-3-img" />
-    </picture>
-    <pre><code class="language-html">&lt;picture>
-  &lt;source
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w
+        "/>
+      <pre><code class="language-html">&lt;img
+  class="full-width"
+  id="fw-2-img"
+  width="1920" height="991"
+  sizes="100vw"
+  srcset="
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w
+  "/></code></pre>
+      <p>Your browser used: <span class="spec" id="fw-2-src"></span> (<span class="spec" id="fw-2-kb"></span>).</p>
+
+      <h3>Full width, no art direction, up to 414px</h3>
+      <img
+        class="full-width"
+        id="fw-1-img"
+        width="1920"
+        height="991"
+        sizes="100vw"
+        srcset="
+          https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w
+        "/>
+      <pre><code class="language-html">&lt;img
+  class="full-width"
+  id="fw-1-img"
+  width="1920" height="991"
+  sizes="100vw"
+  srcset="
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w
+  "/></code></pre>
+      <p>Your browser used: <span class="spec" id="fw-1-src"></span> (<span class="spec" id="fw-1-kb"></span>).</p>
+    </div>
+
+
+    <!-- Art direction banner -->
+    <div id="fw-picture-format">
+      <h2>Full width banner image</h2>
+      <p>For full width images, using <em>Art Direction</em> to display a different crop for mobile and desktop layouts.</p>
+      <img src="./images/mac-uk-banner-art-direction.jpg" width="821" height="404" class="fixed-width" />
+
+      <h3>Full width, up to 2880px</h3>
+      <picture>
+        <source media="(min-width: 1024px)" sizes="100vw"
+          srcset="
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
+          "
+
+        />
+        <source sizes="100vw"
+          srcset="
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w 
+          "/>
+        <img class="full-width" src="404.jpg" id="ad-1-img" />
+      </picture>
+      <pre><code class="language-html">&lt;picture>
+  &lt;source media="(min-width: 1024px)" sizes="100vw"
     srcset="
-      ./images/clinique-banner-414.jpg   414w,
-      ./images/clinique-banner-828.jpg   828w,
-      ./images/clinique-banner-1440.jpg 1440w
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
     "
   />
-  &lt;img class="full-width" src="404.jpg" id="fw-3-img" />
-&lt;/picture></code></pre>
-    <p>Your browser used: <span class="spec" id="fw-3-src"></span></p>
-
-    <h2>Full width, up to 828px</h2>
-    <picture>
-      <source
-        srcset="./images/clinique-banner-414.jpg 414w, ./images/clinique-banner-828.jpg 828w"
-      />
-      <img class="full-width" src="404.jpg" id="fw-2-img" />
-    </picture>
-    <pre><code class="language-html">&lt;picture>
-  &lt;source
+  &lt;source sizes="100vw"
     srcset="
-      ./images/clinique-banner-414.jpg   414w,
-      ./images/clinique-banner-828.jpg   828w
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w 
+    "/>
+  &lt;img class="full-width" src="404.jpg" id="ad-1-img" />
+&lt;/picture></code></pre>
+      <p>Your browser used: <span class="spec" id="ad-1-src"></span> (<span class="spec" id="ad-1-kb"></span>).</p>
+
+      <h3>Full width, up to 1920px</h3>
+      <picture>
+        <source media="(min-width: 1024px)" sizes="100vw"
+          srcset="
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w
+          "
+
+        />
+        <source sizes="100vw"
+          srcset="
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w 
+          "/>
+        <img class="full-width" src="404.jpg" id="ad-2-img" />
+      </picture>
+      <pre><code class="language-html">&lt;picture>
+  &lt;source media="(min-width: 1024px)" sizes="100vw"
+    srcset="
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w
     "
   />
-  &lt;img class="full-width" src="404.jpg" id="fw-2-img" />
+  &lt;source sizes="100vw"
+    srcset="
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+      https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w 
+    "/>
+  &lt;img class="full-width" src="404.jpg" id="ad-2-img" />
 &lt;/picture></code></pre>
-    <p>Your browser used: <span class="spec" id="fw-2-src"></span></p>
+      <p>Your browser used: <span class="spec" id="ad-2-src"></span> (<span class="spec" id="ad-2-kb"></span>).</p>
 
-    <h2>Full width, up to 414px</h2>
-    <picture>
-      <source srcset="./images/clinique-banner-414.jpg 414w" />
-      <img class="full-width" src="404.jpg" id="fw-1-img" />
-    </picture>
-    <pre><code class="language-html">&lt;picture>
-  &lt;source
-    srcset="./images/clinique-banner-414.jpg 414w"
-  />
-  &lt;img class="full-width" src="404.jpg" id="fw-1-img" />
-&lt;/picture></code></pre>
-    <p>Your browser used: <span class="spec" id="fw-1-src"></span></p>
 
-    <script src="js/prism.js"></script>
+      <!-- JS libraries-->
+      <script src="js/prism.js"></script>
   </body>
 </html>
