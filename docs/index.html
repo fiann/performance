@@ -20,6 +20,10 @@
         text-decoration: none;
       }
 
+      table {
+        border: none;
+      }
+
       .toc {
         padding: 1em 2em;
         background-color: #f5f2f0;
@@ -40,6 +44,11 @@
 
       img.fixed-width {
         width: 400px;
+        height: auto;
+      }
+
+      img.fixed-width-slice {
+        width: 133px;
         height: auto;
       }
 
@@ -102,6 +111,60 @@
         smaller version of the image if you make the window smaller, it will simply scale down the
         existing image, unless you cross a Media Query breakpoint.
       </p>
+    </div>
+
+    <!-- Retina images side by side -->
+    <div id="side-by-side">
+      <h2>What do retina images look like?</h2>
+      <p>
+        The image below is in three segments. 
+      </p>
+
+      <table>
+        <tr>
+          <td>
+            <img
+              class="fixed-width-slice"
+              width="133"
+              height="400"
+              sizes="400px"
+              srcset="./images/product-left-label-@1x.jpg 400w"
+              src="404.jpg"
+            />
+          </td>
+          <td>
+            <img
+              class="fixed-width-slice"
+              width="133"
+              height="400"
+              sizes="400px, 800px"
+              srcset="
+                ./images/product-center-label-@1x.jpg 400w,
+                ./images/product-center-label-@2x.jpg 800w
+              "
+              src="404.jpg"
+            />
+          </td>
+          <td>
+            <img
+              class="fixed-width-slice"
+              width="133"
+              height="400"
+              sizes="400px, 800px, 1200px"
+              srcset="
+                ./images/product-right-label-@1x.jpg  400w,
+                ./images/product-right-label-@2x.jpg  800w,
+                ./images/product-right-label-@3x.jpg 1200w
+              "
+              src="404.jpg"
+            />
+          </td>
+        </tr>
+      </table>
+      <p>Your screen is
+        <span class="spec" id="spec-dpr2"></span>. If you have a screen that is capable of
+        displaying @3x resoluton or higher, then you will see @1x on the left, @2x in the center and
+        @3x on the right. If your screen is less than @3x then you will see @2x on the right.</p>
     </div>
 
     <!-- Fixed size images -->

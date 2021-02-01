@@ -20,6 +20,7 @@ function getImageWeight(imgId) {
 
 function renderSpec() {
   document.getElementById("spec-dpr").innerHTML = `@${window.devicePixelRatio} resolution`;
+  document.getElementById("spec-dpr2").innerHTML = `@${window.devicePixelRatio} resolution`;
   document.getElementById("spec-vw").innerHTML = `${document.body.scrollWidth} px`;
   document.getElementById("spec-phys").innerHTML = `${document.body.scrollWidth * window.devicePixelRatio} pixels`;
   // fixed size images
