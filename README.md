@@ -1,3 +1,6 @@
-# Retina image tests
+# Performance notes
 
-See [https://fiann.github.io/retina-images/]
+See 
+
+ * [https://fiann.github.io/performance/retina-images/]
+ * [https://fiann.github.io/performance/cls/]
