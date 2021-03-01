@@ -1,6 +1,6 @@
 # Performance notes
 
-See 
+Performance notes and examples: 
 
- * [https://fiann.github.io/performance/retina-images/]
- * [https://fiann.github.io/performance/cls/]
+ * [Retina images](https://fiann.github.io/performance/retina-images/)
+ * [CLS notes](https://fiann.github.io/performance/cls/)
