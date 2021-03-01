@@ -7,14 +7,14 @@
     <!-- Google Fonts -->
     <link
       rel="preload"
-      href="./fonts//roboto-latin/roboto-v20-latin-regular.woff2"
+      href="/assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
     />
     <!-- <link rel="preload" href="./fonts//roboto-latin/roboto-v20-latin-regular.woff" as="font" type="font/woff" crossorigin="anonymous" /> -->
     <!-- Custom StyleSheet -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
     <!-- Header -->
@@ -94,6 +94,7 @@
           class="full-width"
           id="hero-image"
           sizes="100vw"
+          width="1024" height="530"
           srcset="
             https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
             https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
@@ -110,8 +111,8 @@
                 (a, el) => Math.max(a, el.getBoundingClientRect().right),
                 0
               ) - document.body.getBoundingClientRect().x;
-              document.getElementById("hero-image").width = window.screen.width;
-              document.getElementById("hero-image").height = window.screen.height / 3;
+              //document.getElementById("hero-image").width = window.screen.width;
+              //document.getElementById("hero-image").height = window.screen.height / 3;
             return {
               windowWidth: document.documentElement.clientWidth,
               windowHeight: document.documentElement.clientHeight,
@@ -159,6 +160,29 @@
           including versions of Lorem Ipsum.
         </p>
       </div>
+
+      <!-- Art Direction images -->
+      <h2>Art Direction images</h2>
+      <picture>
+        <source
+          media="(min-width: 1024px)"
+          sizes="100vw"
+          srcset="
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
+          "
+        />
+        <source
+          sizes="100vw"
+          srcset="
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
+          "
+        />
+        <img class="full-width" src="404.jpg" width="818" height="630" id="ad-1-img" />
+      </picture>
+
       <!-- Collection -->
       <!-- <section id="collection" class="section collection">
         <div class="collection__container">
