@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Fonts -->
+    <link
+      rel="preload"
+      href="/assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="preload" href="./fonts//roboto-latin/roboto-v20-latin-regular.woff" as="font" type="font/woff" crossorigin="anonymous" /> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cumulative Layout Images</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/prism/prism.css" />
+    <script src="./js/blurhash-demo.js"></script>
+    <script src="./js/rescript-blurhash.js" defer></script>
+    <script src="/assets/lazysizes/lazysizes.js" defer></script>
+  </head>
+  <body>
+    <h1>Blurhash demo</h1>
+    <div class="">
+      <ul>
+        <!-- <li><a href="#browser-spec">Current browser specification</a></li> -->
+        <li><a href="#single-image">Single image with blurhash</a></li>
+        <li><a href="#art-direction">Art direction image with blurhash</a></li>
+      </ul>
+    </div>
+
+    <!-- Single image -->
+    <div id="single-image">
+      <h2>Single image using blurhash</h2>
+      <div class="image-spec">
+        <p>
+          Using image dimensions <span class="spec image-w">[?]</span> x
+          <span class="spec image-h">[?]</span>.
+        </p>
+        <img
+          class="lazyload fixed-width"
+          data-src="./images/MoonMasterpiece_LunarNewYearCollection_M-1.jpg"
+          data-blurhash="UFI_=y#SqHt8#6oLs8OArFr]yCo#-:J5D+sX"
+          width="750"
+          height="596"
+        />
+      </div>
+    </div>
+
+    <div id="art-direction">
+      <h2>Art direction hero image using blurhash</h2>
+      <div class="image-spec">
+        <p>Matched media query: <span class="spec image-mq">[?]</span></p>
+        <p>
+          Using <span class="spec image-device">[?]</span> image with dimensions
+          <span class="spec image-w">[?]</span> x
+          <span class="spec image-h">[?]</span>
+        </p>
+
+        <picture>
+          <source
+            media="(min-width: 1024px)"
+            data-device="desktop"
+            sizes="100vw"
+            width="1600"
+            height="722"
+            data-blurhash="UDJErHujZiqEvfxvSvNfxHR%tRMy%yIVVs?Z"
+            data-srcset="
+              ./images/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+              ./images/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
+              ./images/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
+            "
+          />
+          <source
+            sizes="100vw"
+            data-device="mobile"
+            width="750"
+            height="596"
+            data-blurhash="UFI_=y#SqHt8#6oLs8OArFr]yCo#-:J5D+sX"
+            data-srcset="
+              ./images/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+              ./images/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
+            "
+          />
+          <img class="lazyload full-width" src="404.jpg" />
+        </picture>
+      </div>
+      <!-- Hero with Art Direction-->
+    </div>
+  </body>
+</html>
