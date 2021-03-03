@@ -94,7 +94,8 @@
           class="full-width"
           id="hero-image"
           sizes="100vw"
-          width="1024" height="530"
+          width="1024"
+          height="530"
           srcset="
             https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
             https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
@@ -111,8 +112,8 @@
                 (a, el) => Math.max(a, el.getBoundingClientRect().right),
                 0
               ) - document.body.getBoundingClientRect().x;
-              //document.getElementById("hero-image").width = window.screen.width;
-              //document.getElementById("hero-image").height = window.screen.height / 3;
+            //document.getElementById("hero-image").width = window.screen.width;
+            //document.getElementById("hero-image").height = window.screen.height / 3;
             return {
               windowWidth: document.documentElement.clientWidth,
               windowHeight: document.documentElement.clientHeight,
@@ -123,13 +124,14 @@
               pageX: document.body.getBoundingClientRect().x,
               pageY: document.body.getBoundingClientRect().y,
               screenX: -window.screenX,
-              screenY: -window.screenY - (window.outerHeight - window.innerHeight),
+              screenY:
+                -window.screenY - (window.outerHeight - window.innerHeight),
             };
           }
           function show() {
             console.log(sizes());
           }
-          show()
+          show();
         </script>
         <!-- Hero with Art Direction-->
         <!-- <picture>
@@ -180,7 +182,13 @@
             https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
           "
         />
-        <img class="full-width" src="404.jpg" width="818" height="630" id="ad-1-img" />
+        <img
+          class="full-width"
+          src="404.jpg"
+          width="818"
+          height="630"
+          id="ad-1-img"
+        />
       </picture>
 
       <!-- Collection -->
