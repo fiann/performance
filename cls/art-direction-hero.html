@@ -15,6 +15,7 @@
     <!-- <link rel="preload" href="./fonts//roboto-latin/roboto-v20-latin-regular.woff" as="font" type="font/woff" crossorigin="anonymous" /> -->
     <!-- Custom StyleSheet -->
     <link rel="stylesheet" href="/assets/css/styles.css" />
+
   </head>
   <body>
     <!-- Header -->
@@ -36,6 +37,7 @@
           <span id="img1-w"></span> x <span id="img1-h"></span>
         </p>
         <p>Matched media query: <span id="img1-mq">[missing]</span></p>
+
         <picture id="img1-pic">
           <source
             media="(min-width: 1024px)"
@@ -59,8 +61,9 @@
               https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
             "
           />
-          <img class="full-width" src="404.jpg" width="750" height="596" id="img1-img" />
+          <img class="full-width blur-up" src="404.jpg" width="750" height="596" id="img1-img" />
         </picture>
+
         <script>
           var pic = document.getElementById("img1-pic");
           var sources = pic.getElementsByTagName("source");
