@@ -7,12 +7,14 @@ window.lazySizesConfig = window.lazySizesConfig || {};
 window.lazySizesConfig.init = false;
 
 function blurImage(img) {
+
+  let timer = +new Date();
   const hash = img.dataset.blurhash;
   const w = img.getAttribute("width");
   const h = img.getAttribute("height");
   const aspect_ratio = h / w;
-  img.src = BlurHash.toDataURL(hash, 32, 32 * aspect_ratio);
-  console.log("Added hash to ", img);
+  img.src = BlurHash.toDataURL(hash, 64, Math.round(64 * aspect_ratio));
+  console.log("Added hash to ", img, "in", (+new Date())-timer, "ms");
 }
 
 function blurPicture(pic) {
