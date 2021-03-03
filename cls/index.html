@@ -1,219 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cumulative Layout Images</title>
-    <!-- Google Fonts -->
-    <link
-      rel="preload"
-      href="/assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <!-- <link rel="preload" href="./fonts//roboto-latin/roboto-v20-latin-regular.woff" as="font" type="font/woff" crossorigin="anonymous" /> -->
-    <!-- Custom StyleSheet -->
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-  </head>
-  <body>
-    <!-- Header -->
-    <header id="header" class="header">
-      <div class="navigation">
-        <div class="container">
-          <nav class="nav">
-            <div class="nav__hamburger">
-              <svg>
-                <use xlink:href="./images/sprite.svg#icon-menu"></use>
-              </svg>
-            </div>
-            <div class="nav__logo">
-              <a href="/" class="scroll-link"> Clinique </a>
-            </div>
-            <div class="nav__menu">
-              <div class="menu__top">
-                <span class="nav__category">PHONE</span>
-                <a href="#" class="close__toggle">
-                  <svg>
-                    <use xlink:href="./images/sprite.svg#icon-cross"></use>
-                  </svg>
-                </a>
-              </div>
-              <ul class="nav__list">
-                <li class="nav__item">
-                  <a href="#newarrivals" class="nav__link scroll-link"
-                    >New Arrivals</a
-                  >
-                </li>
-                <li class="nav__item">
-                  <a href="#specialoffers" class="nav__link scroll-link"
-                    >Special Offers</a
-                  >
-                </li>
-                <li class="nav__item">
-                  <a href="#clinicalreality" class="nav__link scroll-link"
-                    >Clinical Reality</a
-                  >
-                </li>
-                <li class="nav__item">
-                  <a href="#moisturizer" class="nav__link scroll-link"
-                    >Moisturizer</a
-                  >
-                </li>
-                <li class="nav__item">
-                  <a href="#foundation" class="nav__link scroll-link"
-                    >Foundation</a
-                  >
-                </li>
-                <li class="nav__item">
-                  <a href="#shopall" class="nav__link scroll-link">Shop All</a>
-                </li>
-              </ul>
-            </div>
-            <div class="nav__icons">
-              <a href="#" class="icon__item">
-                <svg class="icon__cart">
-                  <use
-                    xlink:href="./images/sprite.svg#icon-shopping-basket"
-                  ></use>
-                </svg>
-                <span id="cart__total">0</span>
-              </a>
-              <a href="#" class="icon__item">
-                <svg class="icon__search">
-                  <use xlink:href="./images/sprite.svg#icon-search"></use>
-                </svg>
-              </a>
-            </div>
-          </nav>
-        </div>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cumulative Layout Images</title>
+  <!-- Google Fonts -->
+  <link rel="preload" href="/assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2" as="font" type="font/woff2"
+    crossorigin="anonymous" />
+  <!-- <link rel="preload" href="./fonts//roboto-latin/roboto-v20-latin-regular.woff" as="font" type="font/woff" crossorigin="anonymous" /> -->
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <h1>Cumulative Layout Shift with img element</h1>
+  <div class="row">
+    <div class="column">
       <div class="hero">
         <!-- Hero without Art Direction - images do not change their orientation and shape-->
-        <img
-          class="full-width"
-          id="hero-image"
-          sizes="100vw"
-          width="1024"
-          height="530"
-          srcset="
-            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
-            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
-            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
-            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
-            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
-          "
-          src="404.jpg"
-        />
-        <script>
-          function sizes() {
-            let contentWidth =
-              [...document.body.children].reduce(
-                (a, el) => Math.max(a, el.getBoundingClientRect().right),
-                0
-              ) - document.body.getBoundingClientRect().x;
-            //document.getElementById("hero-image").width = window.screen.width;
-            //document.getElementById("hero-image").height = window.screen.height / 3;
-            return {
-              windowWidth: document.documentElement.clientWidth,
-              windowHeight: document.documentElement.clientHeight,
-              pageWidth: Math.min(document.body.scrollWidth, contentWidth),
-              pageHeight: document.body.scrollHeight,
-              screenWidth: window.screen.width,
-              screenHeight: window.screen.height,
-              pageX: document.body.getBoundingClientRect().x,
-              pageY: document.body.getBoundingClientRect().y,
-              screenX: -window.screenX,
-              screenY:
-                -window.screenY - (window.outerHeight - window.innerHeight),
-            };
-          }
-          function show() {
-            console.log(sizes());
-          }
-          show();
-        </script>
-        <!-- Hero with Art Direction-->
-        <!-- <picture>
-        <source  srcset="https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440" width="1440" height="900" media="(min-width: 1024px)">
-        <source  srcset="https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920" width="1920" height="1080" media="(min-width: 1024px)">
-        <source  srcset="https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880" width="2880" height="1620" media="(min-width: 1024px)">
-        <source  srcset="https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414" width="414" height="233" media="(min-width: 414px)"> 
-        <source  srcset="https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818" width="818" height="460" media="(min-width: 818px)">  
-        <img class="full-width" src="404.jpg" id="ad-1-img"/>
-      </picture> -->
+        <img class="full-width" id="hero-image" sizes="100vw" srcset="
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
+              " src="404.jpg" />
+              <div>
+                <h3>HTML element example:</h3>
+              </div>
       </div>
-    </header>
-    <!-- End Header -->
-    <!-- Collection -->
-    <div class="container">
-      <!-- Text -->
-      <div>
-        <h3>What is Lorem Ipsum?</h3>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
-      </div>
-
-      <!-- Art Direction images -->
-      <h2>Art Direction images</h2>
-      <picture>
-        <source
-          media="(min-width: 1024px)"
-          sizes="100vw"
-          srcset="
-            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
-            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
-            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
-          "
-        />
-        <source
-          sizes="100vw"
-          srcset="
-            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
-            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
-          "
-        />
-        <img
-          class="full-width"
-          src="404.jpg"
-          width="818"
-          height="630"
-          id="ad-1-img"
-        />
-      </picture>
-
-      <!-- Collection -->
-      <!-- <section id="collection" class="section collection">
-        <div class="collection__container">
-          <div class="collection__box">
-            <img
-              class="collection__img"
-              width="515"
-              height="650"
-              src="./images/Sp21_EBCF_BMW2_dt@1.5x-1.jpg"
-              alt=""
-            />
-          </div>
-          <div class="collection__box">
-            <img
-              class="collection__img"
-              width="515"
-              height="650"
-              src="./images/Sp21_EBCF_BMW2_dt@1.5x-1.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-      </section> -->
+      
     </div>
-  </body>
+    <div class="column">
+      <div class="hero">
+        <!-- Hero without Art Direction - images do not change their orientation and shape-->
+        <img class="full-width" id="hero-image" sizes="100vw" width="1024" height="530" srcset="
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
+                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
+              " src="404.jpg" />
+            <div>
+              <h3>HTML element example:</h3>
+            </div>
+      </div>
+
+    </div>
+  </div>
+  </header>
+  <!-- End Header -->
+  <!-- Text -->
+  <div>
+    <h3>What is Lorem Ipsum?</h3>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting
+      industry. Lorem Ipsum has been the industry's standard dummy text ever
+      since the 1500s, when an unknown printer took a galley of type and
+      scrambled it to make a type specimen book. It has survived not only
+      five centuries, but also the leap into electronic typesetting,
+      remaining essentially unchanged. It was popularised in the 1960s with
+      the release of Letraset sheets containing Lorem Ipsum passages, and
+      more recently with desktop publishing software like Aldus PageMaker
+      including versions of Lorem Ipsum.
+    </p>
+  </div>
+</body>
+
 </html>
