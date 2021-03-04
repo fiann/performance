@@ -12,12 +12,15 @@
     <!-- <link rel="preload" href="./fonts//roboto-latin/roboto-v20-latin-regular.woff" as="font" type="font/woff" crossorigin="anonymous" /> -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cumulative Layout Images</title>
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-    <link rel="stylesheet" href="/assets/prism/prism.css" />
+    <title>Lazyload images with Blurhash</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../assets/prism/prism.css" />
+    <!-- JS libraries-->
     <script src="./js/blurhash-demo.js"></script>
     <script src="./js/rescript-blurhash.js" defer></script>
-    <script src="/assets/lazysizes/lazysizes.js" defer></script>
+    <script src="../../assets/lazysizes/lazysizes.js" defer></script>
+    <script src="../assets/prism/prism.js" defer></script>    
   </head>
   <body>
     <h1>Blurhash demo</h1>
@@ -28,6 +31,11 @@
         <li><a href="#art-direction">Art direction image with blurhash</a></li>
       </ul>
     </div>
+
+    <p>This demo shows the effect of using a blur on the image while it is loading.</p>
+    <p><strong>We are simulating a slow network, otherwise you can't see the effect.</strong> 
+      This page uses the lazysizes.js library, which is normally triggered on the DOMContentLoaded 
+      event.</p>
 
     <!-- Single image -->
     <div id="single-image">
@@ -45,6 +53,13 @@
           height="596"
         />
       </div>
+      <pre><code class="language-html">&lt;img
+  class="lazyload fixed-width"
+  data-src="./images/MoonMasterpiece_LunarNewYearCollection_M-1.jpg"
+  data-blurhash="UFI_=y#SqHt8#6oLs8OArFr]yCo#-:J5D+sX"
+  width="750"
+  height="596"
+/></code></pre>
     </div>
 
     <div id="art-direction">
@@ -87,5 +102,8 @@
       </div>
       <!-- Hero with Art Direction-->
     </div>
+
+    <!-- JS libraries-->
+    <script src="../assets/prism/prism.js"></script>
   </body>
 </html>
