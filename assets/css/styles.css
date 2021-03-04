@@ -6,10 +6,10 @@ Fonts
 
 @font-face {
   font-family: 'Roboto-latin';
-  src: url('/fonts//roboto-latin/roboto-v20-latin-regular.woff2')
+  src: url('../fonts/roboto-latin/roboto-v20-latin-regular.woff2')
     format('woff2');
   /* url('/fonts//roboto-latin/roboto-v20-latin-regular.woff') format('woff'); */
-  font-display: optional;
+  font-display: swap;
 }
 
 /*
@@ -35,21 +35,14 @@ Reset
   --blue: rgb(56, 10, 223);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
 html {
-  font-size: 62.5%;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
 body,
 input {
-  font-size: 1.6rem;
+  font-size: 1.0rem;
   font-weight: 400;
   font-family: 'Roboto-latin';
   color: var(--black);
@@ -132,6 +125,7 @@ img.full-width {
 }
 
 .column {
+  margin: 10px;
   flex: 50%;
 }
 

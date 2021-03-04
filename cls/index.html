@@ -7,73 +7,84 @@
     <!-- Google Fonts -->
     <link
       rel="preload"
-      href="../assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2"
       as="font"
+      href="../assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2"
       type="font/woff2"
       crossorigin="anonymous"
     />
-    <!-- <link rel="preload" href="./fonts//roboto-latin/roboto-v20-latin-regular.woff" as="font" type="font/woff" crossorigin="anonymous" /> -->
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../../assets/css/styles.css" />
     <link rel="stylesheet" href="../../assets/prism/prism.css" />
     <!-- JS libraries-->
     <script src="../assets/lazysizes/lazysizes.js" defer></script>
-    <script src="../assets/prism/prism.js" defer></script>    
+    <script src="../assets/prism/prism.js" defer></script>
   </head>
   <body>
-  
     <h1>Cumulative Layout Shift with img element</h1>
-  <div class="row">
-    <div class="column">
-      <div class="hero">
-        <!-- Hero without Art Direction - images do not change their orientation and shape-->
-        <img class="full-width" id="hero-image" sizes="100vw" srcset="
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
-              " src="404.jpg" />
-              <div>
-                <h3>HTML element example:</h3>
-              </div>
-      </div>
-      
-    </div>
-    <div class="column">
-      <div class="hero">
-        <!-- Hero without Art Direction - images do not change their orientation and shape-->
-        <img class="full-width" id="hero-image" sizes="100vw" width="1024" height="530" srcset="
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
-                https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
-              " src="404.jpg" />
-            <div>
-              <h3>HTML element example:</h3>
-            </div>
-      </div>
 
-    </div>
-  </div>
-  </header>
-  <!-- End Header -->
-  <!-- Text -->
-  <div>
-    <h3>What is Lorem Ipsum?</h3>
     <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting
-      industry. Lorem Ipsum has been the industry's standard dummy text ever
-      since the 1500s, when an unknown printer took a galley of type and
-      scrambled it to make a type specimen book. It has survived not only
-      five centuries, but also the leap into electronic typesetting,
-      remaining essentially unchanged. It was popularised in the 1960s with
-      the release of Letraset sheets containing Lorem Ipsum passages, and
-      more recently with desktop publishing software like Aldus PageMaker
-      including versions of Lorem Ipsum.
+      This demo shows the effect of correctly setting image height to help reduce Cumulative Layout
+      Shift. Use network throttling in the browser dev tools to see the effect.
     </p>
-  </div>
-</body>
+    <p><a href="./art-direction-hero.html">Next page: Using the <code>&lt;picture&gt;</code> tag</a></p>
 
+    <div class="row">
+      <div class="column">
+        <h2>Image with no dimensions:</h2>
+        <img
+          class="full-width"
+          sizes="50vw"
+          srcset="
+            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
+            https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
+          "
+          src="404.jpg"
+        />
+        <p>Any content under the image is going to move, causing a Layout Shift.</p>
+      </div>
+      <div class="column">
+        <h2>With dimensions:</h2>
+          <img
+            class="full-width"
+            sizes="50vw"
+            width="1024"
+            height="530"
+            srcset="
+              https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+              https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+              https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+              https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
+              https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
+            "
+            src="404.jpg"
+          />
+          <p>Image size reserves space, removing the Layout Shift.</p>
+        </div>
+      </div>
+    </div>
+    <!-- End 2 column -->
+    <h2>HTML code including image height and width</h2>
+    <pre><code class="language-html">&lt;img class="full-width" id="hero-image"
+  width="1024" height="530"
+  sizes="50vw"
+  srcset="
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=414   414w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=828   828w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1440 1440w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=1920 1920w,
+    https://www.clinique.com/media/export/cms/2101_assets/Sp21_EBCF_LMW_dt@2x.jpg?imWidth=2880 2880w
+  "
+  src="404.jpg"
+/&gt;</code></pre>
+    <p>Note that the height and width of the final rendered image are specified from CSS. The 
+      <code class="language-html">width</code> and <code class="language-html">height</code> 
+      attributes of the <code class="language-html">&lt;img&gt;</code> tag specify the 
+      <em>aspect ratio</em> of the image, not the rendered size.</p>
+    <p>Image height and width are handled automatically by the browser, with no additional javascript
+      required on the page.
+    </p>
+  </body>
 </html>
