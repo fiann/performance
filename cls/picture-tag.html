@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cumulative Layout Images</title>
+    <!-- Google Fonts -->
+    <link
+      rel="preload"
+      as="font"
+      href="../assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../assets/prism/prism.css" />
+    <!-- JS libraries-->
+    <script src="../assets/js/artdirect.js" defer></script>
+    <script src="../assets/lazysizes/lazysizes.js" defer></script>
+    <script src="../assets/prism/prism.js" defer></script>
+  </head>
+  <body>
+    <h1>Cumulative Layout Shift with <code>&lt;picture&gt;</code> element</h1>
+
+    <p>
+      This demo shows the effect of correctly setting image height to help reduce Cumulative Layout
+      Shift. Use network throttling in the browser dev tools to see the effect.
+    </p>
+    <p>
+      <a href="./">Previous page: Using the <code>&lt;img&gt;</code> tag</a>
+    </p>
+
+    <div class="row">
+      <div class="column">
+        <h2>Picture without <em>artdirect</em>:</h2>
+        <picture id="img1">
+          <source
+            media="(min-width: 1024px)"
+            data-device="desktop"
+            sizes="100vw"
+            width="1600"
+            height="722"
+            srcset="
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
+            "
+          />
+          <source
+            media="(max-width: 1024px)"
+            sizes="100vw"
+            data-device="mobile"
+            width="750"
+            height="596"
+            srcset="
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
+            "
+          />
+          <img
+            class="fixed-width no-artdirect"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          />
+        </picture>
+        <p>Any content under the image is going to move, causing a Layout Shift.</p>
+      </div>
+      <div class="column">
+        <h2>Picture with <em>artdirect</em>:</h2>
+        <!-- Hero without Art Direction - images do not change their orientation and shape-->
+        <picture id="img2">
+          <source
+            media="(min-width: 1024px)"
+            data-device="desktop"
+            sizes="100vw"
+            width="1600"
+            height="722"
+            srcset="
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
+              https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
+            "
+          />
+          <source
+            media="(max-width: 1024px)"
+            sizes="100vw"
+            data-device="mobile"
+            width="750"
+            height="596"
+            srcset="
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+            https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
+            "
+            />
+            <img
+            class="fixed-width"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            />
+          </picture>
+          <p>Any content under the image is going to move, causing a Layout Shift.</p>
+        </div>
+      </div>
+      <!-- End 2 column -->
+      <!-- <p>
+        Displaying <span class="spec" id="img2-device">[?]</span> image with dimensions
+        <span class="spec" id="img2-w">[?]</span> x <span class="spec" id="img2-h">[?]</span>
+      </p>
+      <p>Matched media query: <span class="spec" id="img2-mq">[?]</span></p>
+      <script src="./js/picture-tag.js" defer></script> -->
+      <h2>HTML code for picture element</h2>
+    <pre><code class="language-html">&lt;picture id="img2"&gt;
+      &lt;source
+        media="(min-width: 1024px)"
+        data-device="desktop"
+        sizes="100vw"
+        width="1600"
+        height="722"
+        srcset="
+          https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1440 1440w,
+          https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=1920 1920w,
+          https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection.jpg?imWidth=2880 2880w
+        "
+      /&gt;
+      &lt;source
+        media="(max-width: 1024px)"
+        sizes="100vw"
+        data-device="mobile"
+        width="750"
+        height="596"
+        srcset="
+          https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=414 414w,
+          https://www.maccosmetics.co.uk/media/export/cms/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
+        "
+      /&gt;
+      &lt;img
+        class="fixed-width"
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      /&gt;
+    &lt;/picture&gt;</code></pre>
+    <p>Note that the height and width of the final rendered image are specified from CSS. The 
+      <code class="language-html">width</code> and <code class="language-html">height</code> 
+      attributes of the <code class="language-html">&lt;img&gt;</code> tag specify the 
+      <em>aspect ratio</em> of the image, not the rendered size.</p>
+    <p>Image height and width are handled automatically by the browser, with no additional javascript
+      required on the page.
+    </p>
+
+  </body>
+</html>
