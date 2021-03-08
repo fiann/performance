@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extract picture dimensions</title>
+    <!-- Google Fonts -->
+    <link
+      rel="preload"
+      as="font"
+      href="../assets/fonts/roboto-latin/roboto-v20-latin-regular.woff2"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../assets/css/styles.css" />
+    <link rel="stylesheet" href="../../assets/prism/prism.css" />
+    <!-- JS libraries-->
+    <script src="../assets/js/dimensions.js" defer></script>
+    <script src="../assets/js/artdirect.js" defer></script>
+    <script src="../assets/lazysizes/lazysizes.js" defer></script>
+    <script src="../assets/prism/prism.js" defer></script>
+  </head>
+  <body>
+    <h1>Extracting image dimensions from filename</h1>
+
+    <p>
+      This page uses <a href="./js/picture-tag-dimensions.js">custom JavaScript</a> to parse the dimensions
+      from an image filename in a known format, if the dimensions are not already available.
+    </p>
+    <p>
+      <a href="./picture-tag.html">Previous page: Using the <code>&lt;picture&gt;</code> tag</a>
+    </p>
+
+    <div class="row">
+      <div class="column">
+        <h2>Picture <em>without</em> dimensions:</h2>
+        <picture id="img1">
+          <source
+            sizes="50vw"
+            srcset="
+              https://www.clinique.com/media/export/cms/products/600x750/cl_sku_KWW201_600x750_0.png 600w
+            "
+          />
+          <img
+            class="fixed-width no-dimensions"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          />
+        </picture>
+        <p>Any content under the image is going to move, causing a Layout Shift.</p>
+      </div>
+      <div class="column">
+        <h2>Picture <em>with</em> auto-dimensions:</h2>
+        <picture id="img2">
+          <source
+            sizes="50vw"
+            srcset="
+              https://www.clinique.com/media/export/cms/products/600x750/cl_sku_KWW201_600x750_0.png 600w
+            "
+          />
+          <img
+            class="fixed-width"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          />
+        </picture>
+          <p>Any content under the image is going to move, causing a Layout Shift.</p>
+        </div>
+      </div>
+      <!-- End 2 column -->
+      <!-- <p>
+        Displaying <span class="spec" id="img2-device">[?]</span> image with dimensions
+        <span class="spec" id="img2-w">[?]</span> x <span class="spec" id="img2-h">[?]</span>
+      </p>
+      <p>Matched media query: <span class="spec" id="img2-mq">[?]</span></p>
+      <script src="./js/picture-tag.js" defer></script> -->
+      <h2>HTML code for picture element</h2>
+    <pre><code class="language-html">&lt;picture id="img2"&gt;
+      &lt;source
+        sizes="50vw"
+        srcset="
+          https://www.clinique.com/media/export/cms/products/600x750/cl_sku_KWW201_600x750_0.png 600w
+        "
+      /&gt;
+      &lt;img
+        class="fixed-width"
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      /&gt;
+    &lt;/picture&gt;</code></pre>
+    <!-- <p>Note that the height and width of the final rendered image are specified from CSS. The 
+      <code class="language-html">width</code> and <code class="language-html">height</code> 
+      attributes of the <code class="language-html">&lt;img&gt;</code> tag specify the 
+      <em>aspect ratio</em> of the image, not the rendered size.</p>
+    <p>Image height and width are handled automatically by the browser, with no additional javascript
+      required on the page.
+    </p> -->
+
+  </body>
+</html>

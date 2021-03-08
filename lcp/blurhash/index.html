@@ -20,7 +20,7 @@
     <script src="./js/blurhash-demo.js"></script>
     <script src="./js/rescript-blurhash.js" defer></script>
     <script src="../../assets/lazysizes/lazysizes.js" defer></script>
-    <script src="../assets/prism/prism.js" defer></script>    
+    <script src="../../assets/prism/prism.js" defer></script>    
   </head>
   <body>
     <h1>Blurhash demo</h1>
@@ -51,6 +51,7 @@
           data-blurhash="UFI_=y#SqHt8#6oLs8OArFr]yCo#-:J5D+sX"
           width="750"
           height="596"
+          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
         />
       </div>
       <pre><code class="language-html">&lt;img
@@ -59,18 +60,19 @@
   data-blurhash="UFI_=y#SqHt8#6oLs8OArFr]yCo#-:J5D+sX"
   width="750"
   height="596"
+  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 /></code></pre>
     </div>
 
     <div id="art-direction">
       <h2>Art direction hero image using blurhash</h2>
       <div class="image-spec">
-        <p>Matched media query: <span class="spec image-mq">[?]</span></p>
+        <!-- <p>Matched media query: <span class="spec image-mq">[?]</span></p>
         <p>
           Using <span class="spec image-device">[?]</span> image with dimensions
           <span class="spec image-w">[?]</span> x
           <span class="spec image-h">[?]</span>
-        </p>
+        </p> -->
 
         <picture>
           <source
@@ -97,13 +99,11 @@
               ./images/MoonMasterpiece_LunarNewYearCollection_M-1.jpg?imWidth=818 818w
             "
           />
-          <img class="lazyload full-width" src="404.jpg" />
+          <img class="lazyload full-width" 
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
         </picture>
       </div>
       <!-- Hero with Art Direction-->
     </div>
-
-    <!-- JS libraries-->
-    <script src="../assets/prism/prism.js"></script>
   </body>
 </html>
