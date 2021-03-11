@@ -38,7 +38,7 @@
           <source
             media="(min-width: 1024px)"
             data-device="desktop"
-            sizes="100vw"
+            sizes="50vw"
             width="1600"
             height="722"
             srcset="
@@ -49,7 +49,7 @@
           />
           <source
             media="(max-width: 1024px)"
-            sizes="100vw"
+            sizes="50vw"
             data-device="mobile"
             width="750"
             height="596"
@@ -72,7 +72,7 @@
           <source
             media="(min-width: 1024px)"
             data-device="desktop"
-            sizes="100vw"
+            sizes="50vw"
             width="1600"
             height="722"
             srcset="
@@ -83,7 +83,7 @@
           />
           <source
             media="(max-width: 1024px)"
-            sizes="100vw"
+            sizes="50vw"
             data-device="mobile"
             width="750"
             height="596"
@@ -112,7 +112,7 @@
       &lt;source
         media="(min-width: 1024px)"
         data-device="desktop"
-        sizes="100vw"
+        sizes="50vw"
         width="1600"
         height="722"
         srcset="
@@ -123,7 +123,7 @@
       /&gt;
       &lt;source
         media="(max-width: 1024px)"
-        sizes="100vw"
+        sizes="50vw"
         data-device="mobile"
         width="750"
         height="596"
@@ -141,8 +141,11 @@
       <code class="language-html">width</code> and <code class="language-html">height</code> 
       attributes of the <code class="language-html">&lt;img&gt;</code> tag specify the 
       <em>aspect ratio</em> of the image, not the rendered size.</p>
-    <p>Image height and width are handled automatically by the browser, with no additional javascript
-      required on the page.
+    <p>We use a <a href="../assets/js/dimensions.js">custom JavaScript polyfill</a> to provide
+      the mapping from the <code class="language-html">&lt;source&gt;</code> tag to the 
+      <code class="language-html">&lt;img&gt;</code> tag, as per  
+      <a href="https://github.com/whatwg/html/issues/4968">Issue #4968</a> in the HTML5
+      specification.
     </p>
 
   </body>
