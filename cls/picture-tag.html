@@ -33,7 +33,7 @@
 
     <div class="row">
       <div class="column">
-        <h2>Picture without <em>artdirect</em>:</h2>
+        <h2>Picture without <em>dimensions</em>:</h2>
         <picture id="img1">
           <source
             media="(min-width: 1024px)"
@@ -66,7 +66,7 @@
         <p>Any content under the image is going to move, causing a Layout Shift.</p>
       </div>
       <div class="column">
-        <h2>Picture with <em>artdirect</em>:</h2>
+        <h2>Picture with <em>dimensions</em>:</h2>
         <!-- Hero without Art Direction - images do not change their orientation and shape-->
         <picture id="img2">
           <source
@@ -141,7 +141,7 @@
       <code class="language-html">width</code> and <code class="language-html">height</code> 
       attributes of the <code class="language-html">&lt;img&gt;</code> tag specify the 
       <em>aspect ratio</em> of the image, not the rendered size.</p>
-    <p>We use a <a href="../assets/js/dimensions.js">custom JavaScript polyfill</a> to provide
+    <p>We use a <a href="../assets/js/artdirect.js">custom JavaScript polyfill</a> to provide
       the mapping from the <code class="language-html">&lt;source&gt;</code> tag to the 
       <code class="language-html">&lt;img&gt;</code> tag, as per  
       <a href="https://github.com/whatwg/html/issues/4968">Issue #4968</a> in the HTML5
